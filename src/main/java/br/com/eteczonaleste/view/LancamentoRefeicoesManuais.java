@@ -1,6 +1,8 @@
 package br.com.eteczonaleste.view;
 
-import com.towel.swing.calendar.CalendarView;
+import org.jdatepicker.impl.*;
+//import com.towel.swing.calendar.CalendarView;
+
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -24,6 +26,10 @@ import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
+import org.jdatepicker.impl.JDatePanelImpl;
+import org.jdatepicker.impl.JDatePickerImpl;
+import org.jdatepicker.impl.UtilDateModel;
+
 public class LancamentoRefeicoesManuais extends JFrame{
 	
 	private JLabel lblNome = new JLabel("Nome:");
@@ -32,7 +38,11 @@ public class LancamentoRefeicoesManuais extends JFrame{
         
         private JComboBox cboNome = new JComboBox();
 	private JComboBox cboQuantidade = new JComboBox();
-        private final CalendarView txtData = new CalendarView();
+
+	UtilDateModel model = new UtilDateModel();
+    JDatePanelImpl datePanel = new JDatePanelImpl(model, null);
+    JDatePickerImpl txtData = new JDatePickerImpl(datePanel,null);
+	//private final CalendarView txtData = new CalendarView();
         
 	private JButton btnCadastrar = new JButton("Cadastrar");
 	private JButton btnCancelar = new JButton("Cancelar");
@@ -73,8 +83,9 @@ public class LancamentoRefeicoesManuais extends JFrame{
                          
                             entregas.setId_aluno(alunosPesqNome);  
                             
-                            Calendar selectedDate = txtData.getSelectedDate();
-                                                                        
+                            //Calendar selectedDate = txtData.getSelectedDate();
+                            Calendar selectedDate = (Calendar) txtData.getModel().getValue();                                            
+                            
                             entregas.setHora_retirada(selectedDate.getTime());
                             entregas.setData_retirada(selectedDate.getTime());
                             

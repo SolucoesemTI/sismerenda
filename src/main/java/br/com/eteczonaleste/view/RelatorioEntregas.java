@@ -15,13 +15,15 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import com.towel.swing.calendar.CalendarView;
+//import com.towel.swing.calendar.CalendarView;
+import org.jdatepicker.impl.*;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -37,7 +39,10 @@ public class RelatorioEntregas extends JFrame {
     private JButton btnRelEntreDatas = new JButton("Entregas Entre Datas");
     private JButton btnRelTotaisEntreDatas = new JButton("Totais Entre Datas");
     
-    private final CalendarView txtData_retirada = new CalendarView();
+    UtilDateModel model = new UtilDateModel();
+    JDatePanelImpl datePanel = new JDatePanelImpl(model, new Properties());
+    JDatePickerImpl txtData_retirada = new JDatePickerImpl(datePanel,null);
+    //private final CalendarView txtData_retirada = new CalendarView();
     
     private Collection<Entregas> entregaPesq;
     
@@ -78,7 +83,8 @@ public class RelatorioEntregas extends JFrame {
             public void actionPerformed(ActionEvent j) {  
                 
                 try {
-                    Date initDate = new SimpleDateFormat("dd/MM/yyyy").parse(txtData_retirada.getText());
+                    //Date initDate = new SimpleDateFormat("dd/MM/yyyy").parse(txtData_retirada.getText());
+                	Date initDate = (Date) txtData_retirada.getModel().getValue();
                     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
                     String parsedDate = formatter.format(initDate);
                     int i = 0;
@@ -102,18 +108,19 @@ public class RelatorioEntregas extends JFrame {
         });
         
         btnRelatorio.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {                               
-                try {
-                    new RelatorioFactory().gerarRelatorioDeEntregas(entregaPesq);
-                } catch (IOException ex) {
-                    Logger.getLogger(RelatorioEntregas.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        });
+			
+			public void actionPerformed(ActionEvent e) {				  		                                  
+		                try {
+		                    new RelatorioFactory().gerarRelatorioDeEntregas(entregaPesq);
+		                } catch (IOException ex) {
+		                    Logger.getLogger(RelatorioEntregas.class.getName()).log(Level.SEVERE, null, ex);
+		                }
+		            }
+		        });
+				
+			
 
-        btnRelEntreDatas.addActionListener(new ActionListener() {
-            @Override
+        btnRelEntreDatas.addActionListener(new ActionListener() {            
             public void actionPerformed(ActionEvent ae) {
                 try {
                     new RelatorioFactory().gerarRelatorioEntregasEntreDatas();
@@ -124,7 +131,7 @@ public class RelatorioEntregas extends JFrame {
         });
 
         btnRelTotaisEntreDatas.addActionListener(new ActionListener() {
-            @Override
+            
             public void actionPerformed(ActionEvent ae) {
                 try {
                     new RelatorioFactory().gerarRelatorioEntregasTOTAISEntreDatas();
