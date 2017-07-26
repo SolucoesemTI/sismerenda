@@ -187,7 +187,7 @@ public class RelatorioFactory {
         
         
         gerarRelatorioWithInputStreamJasper(
-                collDtoEntregasTotais, getFileInMetaInf("RelatorioEntregasTOTAISEntreDatas.jrxml.jasper"),params);        
+                collDtoEntregasTotais, getFileInMetaInf("RelatorioEntregasTOTAISEntreDatas.jasper"),params);        
     }
 
     
@@ -229,13 +229,13 @@ public class RelatorioFactory {
 //                params);        
         
           gerarRelatorioWithInputStreamJasper(colectionDeEntregas, getFileInMetaInf(
-                  "RelatorioEntregasEntreDatas.jrxml.jasper"),
+                  "RelatorioEntregasEntreDatas.jasper"),
                    params);        
 
     }       
     public void gerarRelatorioDeEntregas(Collection<Entregas> colectionDeEntregas) throws IOException {
         gerarRelatorioWithInputStreamJasper(colectionDeEntregas, getFileInMetaInf(
-                "RelatorioEntregas.jrxml.jasper"),null);        
+                "RelatorioEntregas.jasper"),null);        
     }
     public void gerarRelatorioAlunosCadastrados(Collection<Alunos> colectionDeAlunos) throws IOException {
         //gerarRelatorio(colectionDeAlunos, getFileInMetaInf(

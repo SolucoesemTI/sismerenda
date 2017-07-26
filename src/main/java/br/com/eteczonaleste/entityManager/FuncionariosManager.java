@@ -29,7 +29,7 @@ public class FuncionariosManager {
     }
 
     public Funcionarios findUserAndPassword(String usuario, String senha) {
-        Funcionarios funcionarioPesq = (Funcionarios) em.createQuery("SELECT f FROM funcionarios f WHERE f.usuario=:usuario AND f.senha=:senha")
+        Funcionarios funcionarioPesq = (Funcionarios) em.createQuery("SELECT f FROM Funcionarios f WHERE f.usuario=:usuario AND f.senha=:senha")
                 .setParameter("usuario", usuario)
                 .setParameter("senha", senha)
                 .getSingleResult();

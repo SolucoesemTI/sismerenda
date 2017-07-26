@@ -85,8 +85,10 @@ public class RelatorioEntregas extends JFrame {
                 try {
                     //Date initDate = new SimpleDateFormat("dd/MM/yyyy").parse(txtData_retirada.getText());
                 	Date initDate = (Date) txtData_retirada.getModel().getValue();
-                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                	System.out.println(initDate);
+                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");                    
                     String parsedDate = formatter.format(initDate);
+                    System.out.println(parsedDate);
                     int i = 0;
                     List<Entregas> findSelectAll = entregaManager.findSelectAll(parsedDate);
                     RelatorioEntregas.this.entregaPesq = findSelectAll;
