@@ -14,7 +14,7 @@
 
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://192.168.1.111:3306/e211sismerenda"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://10.66.246.15:3306/e211sismerenda"/>
             <property name="javax.persistence.jdbc.user" value="root"/>
             <property name="javax.persistence.jdbc.password" value="Etec*211"/>
       

@@ -21,6 +21,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
+import java.util.Properties;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
@@ -40,7 +41,7 @@ public class LancamentoRefeicoesManuais extends JFrame{
 	private JComboBox cboQuantidade = new JComboBox();
 
 	UtilDateModel model = new UtilDateModel();
-    JDatePanelImpl datePanel = new JDatePanelImpl(model, null);
+    JDatePanelImpl datePanel = new JDatePanelImpl(model, new Properties());
     JDatePickerImpl txtData = new JDatePickerImpl(datePanel,null);
 	//private final CalendarView txtData = new CalendarView();
         
@@ -48,7 +49,7 @@ public class LancamentoRefeicoesManuais extends JFrame{
 	private JButton btnCancelar = new JButton("Cancelar");
 	
 	public LancamentoRefeicoesManuais(){
-		super("Lançamento de Refeições Manuais");
+ 		super("Lançamento de Refeições Manuais");
 		
 		Container paine = this.getContentPane();
 		paine.setLayout(null);

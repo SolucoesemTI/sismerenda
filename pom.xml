@@ -117,8 +117,9 @@
 					<archive>
 						<manifest>
 							<addClasspath>true</addClasspath>
-							<mainClass>br.com.eteczonaleste.view.Autenticacao</mainClass>
+							<!-- mainClass>br.com.eteczonaleste.view.Autenticacao</mainClass -->
 							<!-- mainClass>br.com.eteczonaleste.view.RelatorioEntregas</mainClass -->
+                                                        <mainClass>br.com.eteczonaleste.view.Principal</mainClass>
 							<classpathPrefix>${project.build.outputDirectory}.lib</classpathPrefix>
 						</manifest>
 					</archive>
@@ -182,7 +183,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<mainClass>br.com.eteczonaleste.view.RelatorioEntregas</mainClass>
+					<mainClass>br.com.eteczonaleste.view.Autenticacao</mainClass>
 				</configuration>
 			</plugin>
 		</plugins>
