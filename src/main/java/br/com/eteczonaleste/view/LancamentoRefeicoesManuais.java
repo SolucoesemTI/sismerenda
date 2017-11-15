@@ -1,5 +1,6 @@
 package br.com.eteczonaleste.view;
 
+import br.com.eteczonaleste.entity.AlunoComparator;
 import org.jdatepicker.impl.*;
 //import com.towel.swing.calendar.CalendarView;
 
@@ -18,9 +19,12 @@ import br.com.eteczonaleste.entityManager.EntregaManager;
 import java.awt.Toolkit;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 import java.util.Properties;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
@@ -66,8 +70,10 @@ public class LancamentoRefeicoesManuais extends JFrame{
                 cboNome.addItem("");
                 
                 final AlunosManager alunosManager = new AlunosManager();
-                Collection<Alunos> alunosPesq = alunosManager.findSelectAll();
-                for (Alunos e : alunosPesq) {
+                Collection<Alunos> alunosPesq = alunosManager.findSelectAll();                
+                List<Alunos> alunosPesqList = new ArrayList<Alunos>(alunosPesq);
+                Collections.sort(alunosPesqList, new AlunoComparator());
+                for (Alunos e : alunosPesqList) {
                     cboNome.addItem(e.getNome());
                 }
                 
