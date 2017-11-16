@@ -18,6 +18,7 @@ import br.com.eteczonaleste.entityManager.AlunosManager;
 import br.com.eteczonaleste.entityManager.EntregaManager;
 import java.awt.Toolkit;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -25,7 +26,10 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
@@ -89,10 +93,15 @@ public class LancamentoRefeicoesManuais extends JFrame{
                             Alunos alunosPesqNome = alunosManager.findByName(cboNome.getSelectedItem().toString());
                          
                             entregas.setId_aluno(alunosPesqNome);  
-                            
-                            //Calendar selectedDate = txtData.getSelectedDate();
-                            Calendar selectedDate = (Calendar) txtData.getModel().getValue();                                            
-                            
+           
+                            Calendar selectedDate = Calendar.getInstance();
+                            SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy", Locale.ENGLISH);
+                            try {
+                                selectedDate.setTime(sdf.parse(txtData.getModel().getValue().toString()));// all done
+                            } catch (ParseException ex) {
+                                Logger.getLogger(LancamentoRefeicoesManuais.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                             
                             entregas.setHora_retirada(selectedDate.getTime());
                             entregas.setData_retirada(selectedDate.getTime());
                             
